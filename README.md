@@ -11,3 +11,4 @@ go run [filename].go
 ## Table of contents
 
 - [Hello World](app.go)
+- [Modules and Packages](./01-essentials/README.md)
