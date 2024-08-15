@@ -12,3 +12,4 @@ go run [filename].go
 
 - [Hello World](app.go)
 - [Modules and Packages](./01-essentials/README.md)
+- [Variable and Operations](./investment-calculator/investment_calculator.go)
