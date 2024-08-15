@@ -6,11 +6,12 @@ import (
 )
 
 func main() {
-	var investmentAmount float64 = 1000
-	var expectedReturnRate float64 = 5.5
-	var years float64 = 10
+	// We can define more than one variable in the same line. We can use the same type of inference for multiple variables
+	var investmentAmount, years float64 = 1000, 10
 
-	var futureValue = investmentAmount * math.Pow(1+expectedReturnRate/100, years)
+	// This `:=` is used for variables where the type is not explicitly defined but should be inferred from the value assigned to it
+	expectedReturnRate := 5.5
+	futureValue := investmentAmount * math.Pow(1+expectedReturnRate/100, years)
 
 	fmt.Println("Invested amount: ", investmentAmount)
 	fmt.Println("Future value is: ", futureValue)
