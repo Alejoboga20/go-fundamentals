@@ -8,6 +8,18 @@ We need at least one package in our code, the `main` package. This package is th
 
 This way we can import/export code between packages.
 
+Go also uses the concept of **modules**. Modules are a collection of related Go packages that are versioned together as a single unit.
+
+To create a module we need to run:
+
+```bash
+go mod init [module-name]
+```
+
+This will create a `go.mod` file in the root of our project. This file contains the module name and the dependencies of our project.
+
+After this we can use `go build` to build our project and generate and executable file.
+
 ## Resources
 
 - [Go Standard Packages](https://pkg.go.dev/std)
