@@ -26,6 +26,15 @@ func main() {
 	fmt.Printf("Profit: %f\nRatio: %.0f", profit, ratio)
 	fmt.Println()
 	// we can store the formatted string in a variable using `fmt.Sprintf`
-	formatted_value := fmt.Sprintf("Profit: %f\nRatio: %.0f", profit, ratio)
+	formatted_value := fmt.Sprintf("Profit:  %fRatio: %.0f", profit, ratio)
 	fmt.Println("Formatted value: ", formatted_value)
+	fmt.Println()
+
+	// We can also create multiline strings using backticks
+	multiline_string := `
+	This is a multiline string
+	We can use it to write multiple lines of text
+	without having to use the newline character`
+
+	fmt.Println(multiline_string)
 }
