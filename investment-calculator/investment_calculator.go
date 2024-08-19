@@ -30,7 +30,9 @@ func main() {
 	futureRealValue := futureValue / math.Pow(1+inflationRate/100, years)
 
 	futureValueFromFunction, futureRealValueFromFunction := calculateFutureValues(investmentAmount, expectedReturnRate, years)
+	fv, fr := calculateFutureValuesAlterSyntax(investmentAmount, expectedReturnRate, years)
 
+	fmt.Print(fv, fr)
 	fmt.Println("Invested amount: ", investmentAmount)
 	fmt.Println("Future value is: ", futureValue)
 	fmt.Println("Future value from function is: ", futureValueFromFunction)
@@ -43,4 +45,12 @@ func calculateFutureValues(investmentAmount float64, expectedReturnRate float64,
 	resultWithInflation := result / math.Pow(1+inflationRate/100, years)
 
 	return result, resultWithInflation
+}
+
+func calculateFutureValuesAlterSyntax(investmentAmount float64, expectedReturnRate float64, years float64) (fv float64, frv float64) {
+	fv = investmentAmount * math.Pow(1+expectedReturnRate/100, years)
+	frv = fv / math.Pow(1+inflationRate/100, years)
+
+	// we can omit the return statement if we have already defined the return variables in the function signature
+	return
 }
