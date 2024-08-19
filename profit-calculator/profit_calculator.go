@@ -21,4 +21,7 @@ func main() {
 	fmt.Println("Earnings before tax: ", earnings__before_tax)
 	// print with formatting
 	fmt.Printf("Profit: %v\nRatio: %v", profit, ratio)
+	// We have different formatting options for printing values. We can use `%v` to print the value of the variable or `%f` to print the value of the variable as a float
+	// we can also control the number of decimal places by using `%.nf` where `n` is the number of decimal places e.g. `%.2f` will print the value with 2 decimal places
+	fmt.Printf("Profit: %f\nRatio: %.0f", profit, ratio)
 }
