@@ -37,6 +37,7 @@ We can only have one `main` function in our `main` package. If we are building a
 ## Understanding Functions
 
 Functions are code blocks that can be called from other parts of our code.Functions in Go are defined using the `func` keyword. They can have zero or more parameters and zero or more return values.
+We can define the type of the parameters and the return values. They can receive no parameters and return no values as well.
 
 ```go
 func add(x int, y int) int {

@@ -5,9 +5,10 @@ import (
 	"math"
 )
 
+// We can use `const` to define constants. Constants are immutable and their value cannot be changed
+const inflationRate = 2.5
+
 func main() {
-	// We can use `const` to define constants. Constants are immutable and their value cannot be changed
-	const inflationRate = 2.5
 	// We can define more than one variable in the same line. We can use the same type of inference for multiple variables
 	var investmentAmount, years float64
 	// we can init a variable with a value using `:=` for inference
@@ -28,7 +29,18 @@ func main() {
 	futureValue := investmentAmount * math.Pow(1+expectedReturnRate/100, years)
 	futureRealValue := futureValue / math.Pow(1+inflationRate/100, years)
 
+	futureValueFromFunction, futureRealValueFromFunction := calculateFutureValues(investmentAmount, expectedReturnRate, years)
+
 	fmt.Println("Invested amount: ", investmentAmount)
 	fmt.Println("Future value is: ", futureValue)
+	fmt.Println("Future value from function is: ", futureValueFromFunction)
 	fmt.Println("Future real value is: ", futureRealValue)
+	fmt.Println("Future real value from function is: ", futureRealValueFromFunction)
+}
+
+func calculateFutureValues(investmentAmount float64, expectedReturnRate float64, years float64) (float64, float64) {
+	result := investmentAmount * math.Pow(1+expectedReturnRate/100, years)
+	resultWithInflation := result / math.Pow(1+inflationRate/100, years)
+
+	return result, resultWithInflation
 }
