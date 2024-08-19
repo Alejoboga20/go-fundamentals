@@ -34,6 +34,18 @@ func main() {
 
 We can only have one `main` function in our `main` package. If we are building a library we should not have a `main` package because they are not intended to be executed as a program
 
+## Understanding Functions
+
+Functions are code blocks that can be called from other parts of our code.Functions in Go are defined using the `func` keyword. They can have zero or more parameters and zero or more return values.
+
+```go
+func add(x int, y int) int {
+  result = x + y
+
+  return result
+}
+```
+
 ## Resources
 
 - [Go Standard Packages](https://pkg.go.dev/std)
