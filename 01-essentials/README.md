@@ -47,6 +47,17 @@ func add(x int, y int) int {
 }
 ```
 
+We can also return multiple values from a function
+
+```go
+func calculateFutureValues(investmentAmount float64, expectedReturnRate float64, years float64) (float64, float64) {
+	result := investmentAmount * math.Pow(1+expectedReturnRate/100, years)
+	resultWithInflation := result / math.Pow(1+inflationRate/100, years)
+
+	return result, resultWithInflation
+}
+```
+
 ## Resources
 
 - [Go Standard Packages](https://pkg.go.dev/std)
