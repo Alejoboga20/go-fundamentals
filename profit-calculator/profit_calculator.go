@@ -3,22 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	var revenue, expenses, taxRate float64
+	revenue := getUserInput("Enter the revenue: ")
+	expenses := getUserInput("Enter the expenses: ")
+	taxRate := getUserInput("Enter the tax rate: ")
 
-	fmt.Print("Enter the revenue: ")
-	fmt.Scan(&revenue)
+	earnings_before_tax, profit, ratio := calculateFinancials(revenue, expenses, taxRate)
 
-	fmt.Print("Enter the expenses: ")
-	fmt.Scan(&expenses)
-
-	fmt.Print("Enter the tax rate: ")
-	fmt.Scan(&taxRate)
-
-	earnings__before_tax := revenue - expenses
-	profit := earnings__before_tax * (1 - taxRate/100)
-	ratio := earnings__before_tax / profit
-
-	fmt.Println("Earnings before tax: ", earnings__before_tax)
+	fmt.Println("Earnings before tax: ", earnings_before_tax)
 	// print with formatting
 	fmt.Printf("Profit: %v\nRatio: %v", profit, ratio)
 	// We have different formatting options for printing values. We can use `%v` to print the value of the variable or `%f` to print the value of the variable as a float
@@ -45,4 +36,25 @@ func printText(
 	text string,
 ) {
 	fmt.Println(label, text)
+}
+
+func getUserInput(infoText string) float64 {
+	var userInput float64
+
+	fmt.Print(infoText)
+	fmt.Scan(&userInput)
+
+	return userInput
+}
+
+func calculateFinancials(
+	revenue,
+	expenses,
+	taxRate float64,
+) (float64, float64, float64) {
+	earnings_before_tax := revenue - expenses
+	profit := earnings_before_tax * (1 - taxRate/100)
+	ratio := earnings_before_tax / profit
+
+	return earnings_before_tax, profit, ratio
 }
