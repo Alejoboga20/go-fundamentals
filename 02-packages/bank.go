@@ -9,32 +9,39 @@ import (
 
 const ACCOUNT_BALANCE_FILENAME = "balance.txt"
 
-func writeBalanceToFile(balance float64) {
-	// Write the balance to a file
-	balanceText := fmt.Sprint(balance)
-	os.WriteFile(ACCOUNT_BALANCE_FILENAME, []byte(balanceText), 0644)
+func writeFloatToFile(fileName string, floatValue float64) {
+	dataText := fmt.Sprint(floatValue)
+	os.WriteFile(fileName, []byte(dataText), 0644)
 }
 
-func getBalanceFromFile() (float64, error) {
-	data, err := os.ReadFile(ACCOUNT_BALANCE_FILENAME)
+func getFloatFromFile(fileName string, defaultValue ...float64) (float64, error) {
+	// ...float64 is a variadic parameter: it allows the function to accept 0 or more float64 values
+	var defVal float64
+	data, err := os.ReadFile(fileName)
 
-	if err != nil {
-		return 0, errors.New("error reading balance from file")
+	if len(defaultValue) > 0 {
+		defVal = defaultValue[0]
+	} else {
+		defVal = 0
 	}
 
-	balanceText := string(data)
-	balance, err := strconv.ParseFloat(balanceText, 64)
-
 	if err != nil {
-		return 0, errors.New("error parsing balance from file")
+		return defVal, errors.New("error reading from file")
 	}
 
-	return balance, nil
+	dataString := string(data)
+	dataFloat, err := strconv.ParseFloat(dataString, 64)
+
+	if err != nil {
+		return defVal, errors.New("error parsing from file")
+	}
+
+	return dataFloat, nil
 }
 
 func main() {
 	var choice int
-	var accountBalance, err = getBalanceFromFile()
+	var accountBalance, err = getFloatFromFile(ACCOUNT_BALANCE_FILENAME)
 
 	if err != nil {
 		fmt.Println("ERROR")
@@ -65,7 +72,7 @@ func main() {
 			accountBalance += depositAmount // accountBalance = accountBalance + depositAmount
 			fmt.Println("Your new balance is $", accountBalance)
 
-			writeBalanceToFile(accountBalance)
+			writeFloatToFile(ACCOUNT_BALANCE_FILENAME, accountBalance)
 		case 3:
 			var withdrawAmount float64
 			fmt.Println("Enter the amount you want to withdraw: ")
@@ -83,7 +90,7 @@ func main() {
 			accountBalance -= withdrawAmount // accountBalance = accountBalance - withdrawAmount
 			fmt.Println("Your new balance is $", accountBalance)
 
-			writeBalanceToFile(accountBalance)
+			writeFloatToFile(ACCOUNT_BALANCE_FILENAME, accountBalance)
 		case 4:
 			fmt.Println("Goodbye!")
 			fmt.Println("Thank you for using Go Bank!")
