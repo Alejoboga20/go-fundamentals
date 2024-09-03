@@ -25,17 +25,31 @@ func main() {
 		fmt.Println("Your balance is $", accountBalance)
 	} else if choice == 2 {
 		var depositAmount float64
+
 		fmt.Print("Enter the amount you want to deposit: ")
-
 		fmt.Scan(&depositAmount)
-		accountBalance += depositAmount // accountBalance = accountBalance + depositAmount
 
+		if depositAmount <= 0 {
+			fmt.Println("You cannot deposit a negative amount")
+			return
+		}
+
+		accountBalance += depositAmount // accountBalance = accountBalance + depositAmount
 		fmt.Println("Your new balance is $", accountBalance)
 	} else if choice == 3 {
 		var withdrawAmount float64
 		fmt.Println("Enter the amount you want to withdraw: ")
 
 		fmt.Scan(&withdrawAmount)
+
+		if withdrawAmount <= 0 {
+			fmt.Println("You cannot deposit a negative amount")
+			return
+		} else if withdrawAmount > accountBalance {
+			fmt.Println("You do not have enough balance to withdraw that amount")
+			return
+		}
+
 		accountBalance -= withdrawAmount // accountBalance = accountBalance - withdrawAmount
 		fmt.Println("Your new balance is $", accountBalance)
 	} else {
