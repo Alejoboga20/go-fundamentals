@@ -10,7 +10,7 @@ func main() {
 
 	fmt.Println("Welcome to Go Bank!")
 
-	for i := 0; i != 4; i = choice {
+	for {
 		fmt.Println("What woud you like to do?")
 
 		fmt.Println("1. Check Balance")
