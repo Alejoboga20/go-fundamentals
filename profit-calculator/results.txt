@@ -1,0 +1,6 @@
+Revenue: 500.000000
+Expenses: 20.000000
+Tax Rate: 25.000000
+Revenue: 100.000000
+Expenses: 20.000000
+Tax Rate: 10.000000

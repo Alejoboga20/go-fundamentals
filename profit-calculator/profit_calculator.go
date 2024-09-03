@@ -1,6 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
+
+const FILE_NAME = "results.txt"
 
 func main() {
 	revenue := getUserInput("Enter the revenue: ")
@@ -22,6 +28,8 @@ func main() {
 	printText("Formatted value: ", formatted_value)
 	fmt.Println()
 
+	writeResultsInFile(revenue, expenses, taxRate)
+
 	// We can also create multiline strings using backticks
 	multiline_string := `
 	This is a multiline string
@@ -39,12 +47,19 @@ func printText(
 }
 
 func getUserInput(infoText string) float64 {
-	var userInput float64
+	var userInput string
 
 	fmt.Print(infoText)
 	fmt.Scan(&userInput)
 
-	return userInput
+	validatedInput, _ := strconv.ParseFloat(userInput, 64)
+
+	if validatedInput <= 0 {
+		fmt.Println("Invalid input. Please enter a positive number")
+		return getUserInput(infoText)
+	}
+
+	return validatedInput
 }
 
 func calculateFinancials(
@@ -57,4 +72,26 @@ func calculateFinancials(
 	ratio := earnings_before_tax / profit
 
 	return earnings_before_tax, profit, ratio
+}
+
+func writeResultsInFile(revenue, expenses, taxRate float64) {
+	fileInformation, _ := os.Stat(FILE_NAME)
+
+	if fileInformation == nil {
+		_, err := os.Create(FILE_NAME)
+
+		if err != nil {
+			fmt.Println("Error creating file: ", err)
+		}
+	}
+
+	file, err := os.OpenFile(FILE_NAME, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+
+	if err != nil {
+		fmt.Println("Error opening file:", err)
+		return
+	}
+	defer file.Close()
+
+	file.WriteString(fmt.Sprintf("Revenue: %f\nExpenses: %f\nTax Rate: %f\n", revenue, expenses, taxRate))
 }
