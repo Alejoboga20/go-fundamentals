@@ -56,6 +56,7 @@ func main() {
 			fmt.Println("Your new balance is $", accountBalance)
 		} else if choice == 4 {
 			fmt.Println("Goodbye!")
+			break
 		} else {
 			fmt.Println("Invalid choice. Please try again.")
 		}
