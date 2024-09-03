@@ -33,7 +33,7 @@ func main() {
 
 			if depositAmount <= 0 {
 				fmt.Println("You cannot deposit a negative amount")
-				return
+				continue
 			}
 
 			accountBalance += depositAmount // accountBalance = accountBalance + depositAmount
@@ -46,10 +46,10 @@ func main() {
 
 			if withdrawAmount <= 0 {
 				fmt.Println("You cannot withdraw a negative amount")
-				return
+				continue
 			} else if withdrawAmount > accountBalance {
 				fmt.Println("You do not have enough balance to withdraw that amount")
-				return
+				continue
 			}
 
 			accountBalance -= withdrawAmount // accountBalance = accountBalance - withdrawAmount
@@ -61,4 +61,6 @@ func main() {
 			fmt.Println("Invalid choice. Please try again.")
 		}
 	}
+
+	fmt.Println("Thank you for using Go Bank!")
 }
