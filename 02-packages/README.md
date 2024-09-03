@@ -82,3 +82,24 @@ import (
 ```
 
 **_Note:_** The module name is the name of the module that we defined in the `go.mod` file. And the exported functions in the package should start with an uppercase letter.
+
+## Using third-party packages
+
+To use third-party packages we need to import them in the file where we want to use them. We can use the `go get` command to download the package and add it to the `go.mod` file.
+
+```bash
+go get github.com/gorilla/mux
+```
+
+Now we can use the `gorilla/mux` package in our code.
+
+```go
+package main
+
+import (
+  "fmt"
+  "net/http"
+
+  "github.com/gorilla/mux"
+)
+```
