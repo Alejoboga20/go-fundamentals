@@ -14,3 +14,4 @@ go run [filename].go
 - [Modules and Packages](./01-essentials/README.md)
 - [Variables, Contants and Operations](./investment-calculator/investment_calculator.go)
 - [Working with packages](./02-packages/README.md)
+- [Pointers](./03-pointers/README.md)
