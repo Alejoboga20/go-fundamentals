@@ -51,3 +51,17 @@ To call a method, you use the dot operator followed by the method name.
 ```go
 userWithMethod.outputUserDetailsOfUser()
 ```
+
+When we create methods to modify the strcuct fields, we need to use a pointer receiver. This is because Go is a pass-by-value language, so when we pass a struct to a function, a copy of the struct is created. If we want to modify the original struct, we need to pass a pointer to the struct.
+
+```go
+type UserWithPointerReceiver struct {
+  firstName string
+  lastName  string
+}
+
+func (user *UserWithMethods) clearUserName() {
+	user.firstName = ""
+	user.lastName = ""
+}
+```

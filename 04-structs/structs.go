@@ -22,6 +22,11 @@ func (user UserWithMethods) outputUserDetailsOfUser() {
 	fmt.Println("Last Name:", user.lastName)
 }
 
+func (user *UserWithMethods) clearUserName() {
+	user.firstName = ""
+	user.lastName = ""
+}
+
 func main() {
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
@@ -46,8 +51,12 @@ func main() {
 	}
 
 	userWithMethod.outputUserDetailsOfUser()
+	userWithMethod.clearUserName()
+	userWithMethod.outputUserDetailsOfUser()
+
 	outputUserDetails(appUser)
 	outputUserWithPointer(&appUser)
+
 }
 
 func outputUserDetails(appUser User) {
