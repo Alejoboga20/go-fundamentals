@@ -78,3 +78,16 @@ func newUser(firstName, lastName, birthdate string) *User {
 	}
 }
 ```
+
+If we create a package for a struct, the same rules for exporting and unexporting apply. If we want to export a struct, we need to capitalize the first letter of the struct name. If we don't want to export a struct, we need to use a lowercase letter. The same apply for some fields in the struct. If the fields should not be exported, we need to use a lowercase letter (for example `FirstName` is exported while `createdAt` is not)
+
+```go
+package user
+
+type User struct {
+  FirstName string
+  LastName  string
+  Birthdate string
+  createdAt time.Time
+}
+```
