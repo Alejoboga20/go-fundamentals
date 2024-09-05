@@ -65,3 +65,16 @@ func (user *UserWithMethods) clearUserName() {
 	user.lastName = ""
 }
 ```
+
+Constructor functions are functions that return a new instance of a struct. They are used to create and initialize a struct. We return a pointer to the struct because we want to modify the struct fields.
+
+```go
+func newUser(firstName, lastName, birthdate string) *User {
+	return &User{
+		firstName: firstName,
+		lastName:  lastName,
+		birthdate: birthdate,
+		createdAt: time.Now(),
+	}
+}
+```

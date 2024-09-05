@@ -27,24 +27,23 @@ func (user *UserWithMethods) clearUserName() {
 	user.lastName = ""
 }
 
+// constructor function: it's a pattern to create a new instance of a struct
+func newUser(firstName, lastName, birthdate string) *User {
+	return &User{
+		firstName: firstName,
+		lastName:  lastName,
+		birthdate: birthdate,
+		createdAt: time.Now(),
+	}
+}
+
 func main() {
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
-	// we can omit the field names if we know the order of the fields
-	// appUser := User{
-	// 	userFirstName,
-	// 	userLastName,
-	// 	userBirthdate,
-	// 	time.Now(),
-	// }
-	appUser := User{
-		firstName: userFirstName,
-		lastName:  userLastName,
-		birthdate: userBirthdate,
-		createdAt: time.Now(),
-	}
+	appUser := newUser(userFirstName, userLastName, userBirthdate)
+
 	userWithMethod := UserWithMethods{
 		firstName: userFirstName,
 		lastName:  userLastName,
@@ -54,8 +53,8 @@ func main() {
 	userWithMethod.clearUserName()
 	userWithMethod.outputUserDetailsOfUser()
 
-	outputUserDetails(appUser)
-	outputUserWithPointer(&appUser)
+	outputUserDetails(*appUser)
+	outputUserWithPointer(appUser)
 
 }
 
