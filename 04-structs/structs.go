@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"time"
 )
@@ -28,13 +29,19 @@ func (user *UserWithMethods) clearUserName() {
 }
 
 // constructor function: it's a pattern to create a new instance of a struct
-func newUser(firstName, lastName, birthdate string) *User {
+func newUser(firstName, lastName, birthdate string) (*User, error) {
+	if firstName == "" || lastName == "" || birthdate == "" {
+		fmt.Println("Please provide all the required fields")
+
+		return nil, errors.New("missing required fields")
+	}
+
 	return &User{
 		firstName: firstName,
 		lastName:  lastName,
 		birthdate: birthdate,
 		createdAt: time.Now(),
-	}
+	}, nil
 }
 
 func main() {
@@ -42,7 +49,12 @@ func main() {
 	userLastName := getUserData("Please enter your last name: ")
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
-	appUser := newUser(userFirstName, userLastName, userBirthdate)
+	appUser, err := newUser(userFirstName, userLastName, userBirthdate)
+
+	if err != nil {
+		fmt.Println("Error creating user")
+		return
+	}
 
 	userWithMethod := UserWithMethods{
 		firstName: userFirstName,
@@ -77,7 +89,7 @@ func getUserData(promptText string) string {
 	var value string
 
 	fmt.Print(promptText)
-	fmt.Scan(&value)
+	fmt.Scanln(&value)
 
 	return value
 }
