@@ -12,6 +12,16 @@ type User struct {
 	createdAt time.Time
 }
 
+type UserWithMethods struct {
+	firstName string
+	lastName  string
+}
+
+func (user UserWithMethods) outputUserDetailsOfUser() {
+	fmt.Println("First Name:", user.firstName)
+	fmt.Println("Last Name:", user.lastName)
+}
+
 func main() {
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
@@ -30,7 +40,12 @@ func main() {
 		birthdate: userBirthdate,
 		createdAt: time.Now(),
 	}
+	userWithMethod := UserWithMethods{
+		firstName: userFirstName,
+		lastName:  userLastName,
+	}
 
+	userWithMethod.outputUserDetailsOfUser()
 	outputUserDetails(appUser)
 	outputUserWithPointer(&appUser)
 }

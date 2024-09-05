@@ -31,3 +31,23 @@ type User struct {
 ```
 
 Also we can omit assigning values to fields, in this case the fields will be initialized with their zero values.
+
+We can also attach functions into a struct, these functions are called methods. Methods are functions that are associated with a particular type. They are similar to functions but are called using a receiver. To declare a method, you use the `func` keyword followed by the receiver type and the method name.
+
+```go
+type UserWithMethods struct {
+	firstName string
+	lastName  string
+}
+
+func (user UserWithMethods) outputUserDetailsOfUser() {
+	fmt.Println("First Name:", user.firstName)
+	fmt.Println("Last Name:", user.lastName)
+}
+```
+
+To call a method, you use the dot operator followed by the method name.
+
+```go
+userWithMethod.outputUserDetailsOfUser()
+```
