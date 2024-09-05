@@ -10,4 +10,24 @@ type User struct {
 	birthdate string
 	createdAt time.Time
 }
+
+appUser := User{
+		firstName: userFirstName,
+		lastName:  userLastName,
+		birthdate: userBirthdate,
+		createdAt: time.Now(),
+}
 ```
+
+If we omit the field names, the fields are initialized in the order they are declared in the struct.
+
+```go
+type User struct {
+  firstName string
+  lastName  string
+  birthdate string
+  createdAt time.Time
+}
+```
+
+Also we can omit assigning values to fields, in this case the fields will be initialized with their zero values.

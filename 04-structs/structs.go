@@ -17,6 +17,13 @@ func main() {
 	userLastName := getUserData("Please enter your last name: ")
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
+	// we can omit the field names if we know the order of the fields
+	// appUser := User{
+	// 	userFirstName,
+	// 	userLastName,
+	// 	userBirthdate,
+	// 	time.Now(),
+	// }
 	appUser := User{
 		firstName: userFirstName,
 		lastName:  userLastName,
