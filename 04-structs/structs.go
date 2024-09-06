@@ -6,7 +6,16 @@ import (
 	"example.com/structs/user"
 )
 
+type customString string // custom type
+
+func (text customString) log() {
+	fmt.Println("Logging custom string:", text)
+}
+
 func main() {
+	var name customString = "John Doe"
+	name.log()
+
 	userFirstName := getUserData("Please enter your first name: ")
 	userLastName := getUserData("Please enter your last name: ")
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")

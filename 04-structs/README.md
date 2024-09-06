@@ -115,3 +115,20 @@ func NewAdmin(email, password string) Admin {
 	}
 }
 ```
+
+## Custom Types
+
+We can also create custom types using the `type` keyword. This is useful when we want to create a new type that is based on an existing type. We can create a custom type using the `type` keyword followed by the name of the new type and the existing type.
+
+```go
+type customString string // custom type
+
+func (text customString) log() {
+	fmt.Println("Logging custom string:", text)
+}
+
+func main() {
+  var cs customString = "Hello, World!"
+  cs.log()
+}
+```
