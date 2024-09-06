@@ -18,6 +18,12 @@ type UserWithMethods struct {
 	LastName  string
 }
 
+type Admin struct {
+	emial    string
+	password string
+	UserWithMethods
+}
+
 func (user UserWithMethods) OutputUserDetailsOfUser() {
 	fmt.Println("First Name:", user.FirstName)
 	fmt.Println("Last Name:", user.LastName)
@@ -42,4 +48,15 @@ func NewUser(firstName, lastName, birthdate string) (*User, error) {
 		Birthdate: birthdate,
 		CreatedAt: time.Now(),
 	}, nil
+}
+
+func NewAdmin(email, password string) Admin {
+	return Admin{
+		emial:    email,
+		password: password,
+		UserWithMethods: UserWithMethods{
+			FirstName: "Admin",
+			LastName:  "Admin",
+		},
+	}
 }

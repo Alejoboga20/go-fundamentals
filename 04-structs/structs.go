@@ -12,6 +12,9 @@ func main() {
 	userBirthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
 	appUser, err := user.NewUser(userFirstName, userLastName, userBirthdate)
+	admin := user.NewAdmin("admin@email.com", "password")
+
+	admin.OutputUserDetailsOfUser()
 
 	if err != nil {
 		fmt.Println("Error creating user")

@@ -91,3 +91,27 @@ type User struct {
   createdAt time.Time
 }
 ```
+
+We can also embed a struct into another struct. This is called composition. When we embed a struct into another struct, the fields and methods of the embedded struct are promoted to the outer struct. This means that we can access the fields and methods of the embedded struct as if they were part of the outer struct.
+
+```go
+type Admin struct {
+	emial    string
+	password string
+	user User
+}
+
+
+func NewAdmin(email, password string) Admin {
+	return Admin{
+		emial:    email,
+		password: password,
+		user: User{
+			FirstName: "Admin",
+			LastName:  "Admin",
+			Birthdate: "01/01/2000",
+			CreatedAt: time.Now(),
+		},
+	}
+}
+```
