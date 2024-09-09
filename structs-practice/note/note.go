@@ -3,6 +3,8 @@ package note
 import (
 	"errors"
 	"fmt"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -14,6 +16,14 @@ type Note struct {
 
 func (note *Note) Display() {
 	fmt.Printf("Your note title %v has the following content: \n\n %v", note.title, note.content)
+}
+
+func (note *Note) Save() {
+	fileName := strings.ReplaceAll(note.title, " ", "_")
+	fileName = strings.ToLower(fileName)
+	fileName = fileName + ".txt"
+
+	os.WriteFile(fileName, []byte(note.content), 0644)
 }
 
 func New(title, content string) (Note, error) {

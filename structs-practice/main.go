@@ -18,6 +18,7 @@ func main() {
 	}
 
 	userNote.Display()
+	userNote.Save()
 }
 
 func getUserInput(prompt string) string {
