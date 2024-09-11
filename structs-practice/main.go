@@ -39,7 +39,7 @@ func main() {
 	outputData(&userTodo)
 	outputData(&userNote)
 
-	fmt.Println("Note and Todo saved successfully!")
+	printSomething("Note and Todo saved successfully!")
 }
 
 func getUserInput(prompt string) string {
@@ -87,4 +87,8 @@ func saveData(data saver) error {
 func outputData(data outputtable) {
 	data.Display()
 	saveData(data)
+}
+
+func printSomething(data interface{}) {
+	fmt.Println(data)
 }
