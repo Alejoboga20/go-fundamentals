@@ -4,12 +4,22 @@ import (
 	"bufio"
 	"fmt"
 	"notes-app/note"
+	"notes-app/todo"
 	"os"
 	"strings"
 )
 
 func main() {
+	todoText := getTodoData()
 	title, content := getNoteData()
+
+	userTodo, err := todo.New(todoText)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	userNote, err := note.New(title, content)
 
 	if err != nil {
@@ -17,7 +27,9 @@ func main() {
 		return
 	}
 
+	userTodo.Display()
 	userNote.Display()
+
 	err = userNote.Save()
 
 	if err != nil {
@@ -25,7 +37,14 @@ func main() {
 		return
 	}
 
-	fmt.Println("Note saved successfully!")
+	err = userTodo.Save()
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println("Note and Todo saved successfully!")
 }
 
 func getUserInput(prompt string) string {
@@ -49,4 +68,10 @@ func getNoteData() (string, string) {
 	content := getUserInput("Note content:")
 
 	return title, content
+}
+
+func getTodoData() string {
+	text := getUserInput("Todo text:")
+
+	return text
 }
