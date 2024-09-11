@@ -9,6 +9,10 @@ import (
 	"strings"
 )
 
+type saver interface {
+	Save() error
+}
+
 func main() {
 	todoText := getTodoData()
 	title, content := getNoteData()
