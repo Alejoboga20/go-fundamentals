@@ -90,5 +90,23 @@ func outputData(data outputtable) {
 }
 
 func printSomething(data interface{}) {
+	typedValue, ok := data.(int) // extracting the value and checking the type
+
+	if ok {
+		fmt.Println("Integer value:", typedValue)
+		return
+	}
+
+	switch data.(type) {
+	case string:
+		fmt.Println("String value")
+	case int:
+		fmt.Println("Integer value")
+	case bool:
+		fmt.Println("Boolean value")
+	default:
+		fmt.Println("Unknown type")
+	}
+
 	fmt.Println(data)
 }

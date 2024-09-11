@@ -152,7 +152,18 @@ type outputtable interface {
 In Go we also have an interface for any type, the empty interface. The empty interface is an interface that has no methods. This means that any type can satisfy the empty interface. The empty interface is used when we want to work with values of unknown types.
 
 ```go
+
 func printSomething(data interface{}) {
+
+	switch data.(type) {
+	case string:
+		fmt.Println("String value")
+	case int:
+		fmt.Println("Integer value")
+	default:
+		fmt.Println("Unknown type")
+	}
+
 	fmt.Println(data)
 }
 ```
