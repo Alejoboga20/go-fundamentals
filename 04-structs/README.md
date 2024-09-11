@@ -167,3 +167,19 @@ func printSomething(data interface{}) {
 	fmt.Println(data)
 }
 ```
+
+## Generics
+
+In Go 1.18, generics were introduced. Generics allow you to write functions, types, and interfaces that can work with any type. This means that you can write code that is more flexible and reusable. Generics are a way to write code that is not tied to a specific type.
+
+```go
+
+result := add(1, 2)
+fmt.Println(result)
+
+func add[T int | float64 | string](a, b T) T {
+	return a + b
+}
+```
+
+This is useful when we want to write functions that can work with different types. We can define the types that the function can work with using the square brackets. We can specify multiple types separated by a pipe `|`.
