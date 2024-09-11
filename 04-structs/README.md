@@ -132,3 +132,19 @@ func main() {
   cs.log()
 }
 ```
+
+## Interfaces
+
+An interface is a collection of method signatures that a type can implement. It defines a set of methods that a type must implement in order to satisfy the interface. Interfaces are used to define behavior and are a way to achieve polymorphism in Go.
+
+```go
+
+type saver interface {
+	Save() error
+}
+
+type outputtable interface {
+	saver
+	Display()
+}
+```
