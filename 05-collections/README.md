@@ -14,3 +14,15 @@ for i := range prices {
 		fmt.Println(prices[i])
 }
 ```
+
+### Slices
+
+A Slice is a window in the original array. It is a reference to the original array, so any changes made to the slice will affect the original array. Here's how you can declare a slice in Go:
+
+```go
+featuredPricesOne := prices[1:3]
+featuredPricesTwo := prices[:3]
+featuredPricesThree := prices[1:]
+concatenatedPrices := featuredPricesOne[:1]
+fmt.Println(featuredPricesOne, featuredPricesTwo, featuredPricesThree, concatenatedPrices)
+```

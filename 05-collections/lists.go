@@ -19,6 +19,15 @@ func main() {
 	featuredPricesTwo := prices[:3]
 	featuredPricesThree := prices[1:]
 	concatenatedPrices := featuredPricesOne[:1]
+
 	fmt.Println(featuredPricesOne, featuredPricesTwo, featuredPricesThree, concatenatedPrices)
+
+	// Slices metadata
+	fmt.Println(len(prices), cap(prices))
+	fmt.Println(len(featuredPricesOne), cap(featuredPricesOne))
+
+	// we can re-slice and select more elements to the right
+	concatenatedPrices = concatenatedPrices[:3]
+	fmt.Println(featuredPricesOne)
 
 }
