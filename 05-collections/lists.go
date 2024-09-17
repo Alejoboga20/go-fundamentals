@@ -15,6 +15,10 @@ func main() {
 	}
 
 	// Slices
-	featuredPrices := prices[1:3]
-	fmt.Println(featuredPrices)
+	featuredPricesOne := prices[1:3]
+	featuredPricesTwo := prices[:3]
+	featuredPricesThree := prices[1:]
+	concatenatedPrices := featuredPricesOne[:1]
+	fmt.Println(featuredPricesOne, featuredPricesTwo, featuredPricesThree, concatenatedPrices)
+
 }
