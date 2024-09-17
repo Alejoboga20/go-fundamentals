@@ -13,4 +13,8 @@ func main() {
 	for i := range prices {
 		fmt.Println(prices[i])
 	}
+
+	// Slices
+	featuredPrices := prices[1:3]
+	fmt.Println(featuredPrices)
 }
