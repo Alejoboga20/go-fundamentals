@@ -16,6 +16,10 @@ func main() {
 
 	fmt.Println(userNames)
 
+	for index, name := range userNames {
+		fmt.Println(index, name)
+	}
+
 	courseRatings := make(floatMap, 3)
 
 	courseRatings["Go"] = 4.7
@@ -23,4 +27,8 @@ func main() {
 	courseRatings["Java"] = 4.8
 
 	courseRatings.output()
+
+	for course, rating := range courseRatings {
+		fmt.Println(course, rating)
+	}
 }
