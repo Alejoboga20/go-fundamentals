@@ -91,10 +91,22 @@ func main() {
 
 	products :=
 		[]Product{
-			Product{1, "laptop", 1000.00},
-			Product{2, "mouse", 20.00},
+			{1, "laptop", 1000.00},
+			{2, "mouse", 20.00},
 		}
 
 	updatedProducts := append(products, Product{3, "keyboard", 50.00})
 	fmt.Println(updatedProducts)
+
+	prices := []float64{10.99, 5.99, 3.99}
+	fmt.Println(prices[0])
+
+	updatedPrices := append(prices, 1.99)
+	pricesWithRemovedElements := prices[1 : len(prices)-1]
+	fmt.Println(updatedPrices, prices, pricesWithRemovedElements)
+
+	discountPrices := []float64{1.99, 2.99, 3.99}
+	// to unpack the slice we use the ... operator
+	updatedPrices = append(updatedPrices, discountPrices...)
+	fmt.Println(updatedPrices)
 }
