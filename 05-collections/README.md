@@ -67,3 +67,30 @@ Different from arrays and slices, maps are reference types. When you assign a ma
 Maps and structs are two ways to store collections of data. Maps are useful when you don't know the keys at compile time and when you need to store data in a key-value pair format. Structs are useful when you know the keys at compile time and when you need to store data in a structured format.
 
 Also in a map any value can be used as a key, but in a struct only strings can be used as keys.
+
+We can use `make` to create a map with a specific size. This is useful when you know the size of the map ahead of time and want to avoid resizing the map. We can also use `make` to create a slice with a specific size and capacity
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	userNames := make([]string, 2, 5)
+
+	userNames[0] = "John"
+	userNames[1] = "Doe"
+
+	fmt.Println(userNames)
+
+	courseRatings := make(map[string]float64, 3)
+
+	courseRatings["Go"] = 4.7
+	courseRatings["Python"] = 4.5
+	courseRatings["Java"] = 4.8
+}
+```
+
+The use of `make` it's more efficient than using the shorthand syntax because it allows you to specify the size and capacity of the slice or map. This can help you avoid resizing the slice or map when you add elements to it.
+
+The `capacity` of a slice is the number of elements in the underlying array, starting from the first element in the slice. The `size` of a slice is the number of elements in the slice. The `size` of a slice cannot exceed its `capacity`.
