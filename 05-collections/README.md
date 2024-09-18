@@ -34,10 +34,30 @@ Maps in Go are unordered collections of key-value pairs. Here's how you can decl
 ```go
 package main
 
+import "fmt"
+
 func main() {
 	websites := map[string]string{
-		"SitePoint": "https://www.sitepoint.com",
-		"Google":    "https://www.google.com",
+		"Google":   "https://www.google.com",
+		"Facebook": "https://www.facebook.com",
+		"Azure":    "https://www.azure.com",
 	}
+	mapWithNumbersAsKeys := map[int]string{
+		1: "One",
+		2: "Two",
+	}
+
+	fmt.Println(websites)
+	fmt.Println(websites["Google"])
+	fmt.Println(mapWithNumbersAsKeys)
+	fmt.Println(mapWithNumbersAsKeys[1])
+
+	websites["LinkedIn"] = "https://www.linkedin.com"
+	fmt.Println(websites)
+
+	delete(websites, "Facebook")
+	fmt.Println(websites)
 }
 ```
+
+Different from arrays and slices, maps are reference types. When you assign a map to another variable or pass it to a function, you are passing a reference to the original map. This means that any changes made to the map will affect the original map. Also maps are dynamic, you can add or remove elements from a map after it has been created.
