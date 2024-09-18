@@ -61,3 +61,9 @@ func main() {
 ```
 
 Different from arrays and slices, maps are reference types. When you assign a map to another variable or pass it to a function, you are passing a reference to the original map. This means that any changes made to the map will affect the original map. Also maps are dynamic, you can add or remove elements from a map after it has been created.
+
+### Maps Vs Structs
+
+Maps and structs are two ways to store collections of data. Maps are useful when you don't know the keys at compile time and when you need to store data in a key-value pair format. Structs are useful when you know the keys at compile time and when you need to store data in a structured format.
+
+Also in a map any value can be used as a key, but in a struct only strings can be used as keys.
