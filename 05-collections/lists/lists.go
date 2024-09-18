@@ -1,5 +1,3 @@
-// package main
-
 // import "fmt"
 
 // // func main() {
@@ -63,7 +61,7 @@
 //		dynamic list of products (at least 2 products).
 //		Then add a third product to the existing list of products.
 
-package main
+package lists
 
 import "fmt"
 

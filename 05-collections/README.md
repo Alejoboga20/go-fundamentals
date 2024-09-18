@@ -26,3 +26,18 @@ featuredPricesThree := prices[1:]
 concatenatedPrices := featuredPricesOne[:1]
 fmt.Println(featuredPricesOne, featuredPricesTwo, featuredPricesThree, concatenatedPrices)
 ```
+
+## Maps
+
+Maps in Go are unordered collections of key-value pairs. Here's how you can declare a map in Go:
+
+```go
+package main
+
+func main() {
+	websites := map[string]string{
+		"SitePoint": "https://www.sitepoint.com",
+		"Google":    "https://www.google.com",
+	}
+}
+```
