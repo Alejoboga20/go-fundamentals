@@ -35,3 +35,19 @@ func main() {
   }()
 }
 ```
+
+## Factory Functions
+
+Factory functions are functions that return another function. They are useful when you need to create a function with a specific behavior. Here's an example of a factory function:
+
+```go
+
+// factory function
+func createTransformer(factor int) func(int) int {
+	return func(number int) int {
+		return number * factor
+	}
+}
+```
+
+Also note the use of closures in the above example. Closures are functions that reference variables from outside their body. In the above example, the inner function `func(number int) int` references the `factor` variable from the outer function `createTransformer`.
