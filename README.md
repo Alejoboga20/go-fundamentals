@@ -17,3 +17,4 @@ go run [filename].go
 - [Pointers](./03-pointers/README.md)
 - [Structs, Custom Types, Interfaces, and Generics](./04-structs/README.md)
 - [Collections](./05-collections/README.md)
+- [Deep Dive into Functions](./06-functions/README.md)
