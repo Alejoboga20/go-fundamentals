@@ -2,43 +2,22 @@ package main
 
 import "fmt"
 
-type transformFunc func(int) int
-
 func main() {
-	numbersToDouble := []int{1, 2, 3, 4, 5}
-	numbersToTriple := []int{3, 4, 5, 6, 7}
+	numbers := []int{1, 2, 3}
 
-	doubled := transformNumbers(&numbersToDouble, getTransformerFunction(&numbersToDouble))
-	tripled := transformNumbers(&numbersToTriple, getTransformerFunction(&numbersToTriple))
+	transformed := transformNumbers(&numbers, func(value int) int {
+		return value * 2
+	})
 
-	fmt.Println("Original numbers to double:", numbersToDouble)
-	fmt.Println("Original numbers to triple:", numbersToTriple)
-	fmt.Println("Doubled numbers:", doubled)
-	fmt.Println("Tripled numbers:", tripled)
+	fmt.Println(transformed)
 }
 
-func transformNumbers(numbers *[]int, transform transformFunc) []int {
-	doubledNumbers := []int{}
+func transformNumbers(numbers *[]int, transform func(int) int) []int {
+	transformedNumbers := []int{}
 
-	for _, value := range *numbers {
-		doubledNumbers = append(doubledNumbers, transform(value))
+	for _, val := range *numbers {
+		transformedNumbers = append(transformedNumbers, transform(val))
 	}
 
-	return doubledNumbers
-}
-
-func double(number int) int {
-	return number * 2
-}
-
-func triple(number int) int {
-	return number * 3
-}
-
-func getTransformerFunction(numbers *[]int) transformFunc {
-	if (*numbers)[0] == 1 {
-		return double
-	}
-
-	return triple
+	return transformedNumbers
 }

@@ -1,4 +1,4 @@
-## Functions Deep Dive
+# Functions Deep Dive
 
 Functions are first-class citizens in Go. They can be assigned to variables, passed as arguments, and returned from other functions. Functions can also be anonymous, which means they don't have a name.
 
@@ -21,5 +21,17 @@ func getTransformerFunction(numbers *[]int) transformFunc {
 	}
 
 	return triple
+}
+```
+
+## Anonymous Functions
+
+Anonymous functions are functions without a name. They are useful when you need to define a function inline. Here's an example of an anonymous function:
+
+```go
+func main() {
+  func() {
+    fmt.Println("Hello, World!")
+  }()
 }
 ```
