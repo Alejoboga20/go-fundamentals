@@ -3,38 +3,19 @@ package main
 import "fmt"
 
 func main() {
-	numbers := []int{1, 2, 3}
-
-	// factory function
-	doubler := createTransformer(2)
-	tripler := createTransformer(3)
-
-	doubled := transformNumbers(&numbers, doubler)
-	tripled := transformNumbers(&numbers, tripler)
-
-	// anonymous function
-	transformed := transformNumbers(&numbers, func(value int) int {
-		return value * 2
-	})
-
-	fmt.Println(transformed)
-	fmt.Println(doubled)
-	fmt.Println(tripled)
+	fmt.Println("Factorial of 5 is", factorial(5))
 }
 
-func transformNumbers(numbers *[]int, transform func(int) int) []int {
-	transformedNumbers := []int{}
-
-	for _, val := range *numbers {
-		transformedNumbers = append(transformedNumbers, transform(val))
+func factorial(number int) int {
+	if number == 0 {
+		return 1
 	}
-
-	return transformedNumbers
+	return number * factorial(number-1)
 }
 
-// factory function
-func createTransformer(factor int) func(int) int {
-	return func(number int) int {
-		return number * factor
-	}
-}
+// 5 * factorial(4)
+// 5 * 4 * factorial(3)
+// 5 * 4 * 3 * factorial(2)
+// 5 * 4 * 3 * 2 * factorial(1)
+// 5 * 4 * 3 * 2 * 1 * factorial(0)
+// 5 * 4 * 3 * 2 * 1 * 1

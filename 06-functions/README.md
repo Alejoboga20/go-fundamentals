@@ -51,3 +51,17 @@ func createTransformer(factor int) func(int) int {
 ```
 
 Also note the use of closures in the above example. Closures are functions that reference variables from outside their body. In the above example, the inner function `func(number int) int` references the `factor` variable from the outer function `createTransformer`.
+
+## Recursion
+
+Recursion is a technique in which a function calls itself. It is useful when you need to solve a problem that can be broken down into smaller subproblems. Here's an example of a recursive function:
+
+```go
+func factorial(n int) int {
+  if n == 0 {
+    return 1
+  }
+
+  return n * factorial(n-1)
+}
+```
