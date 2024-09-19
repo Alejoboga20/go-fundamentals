@@ -2,7 +2,7 @@
 
 Functions are first-class citizens in Go. They can be assigned to variables, passed as arguments, and returned from other functions. Functions can also be anonymous, which means they don't have a name.
 
-Here's an example of passing a function as an argument:
+Here's an example of passing a function as an argument and returning a function from another function:
 
 ```go
 func transformNumbers(numbers *[]int, transform func(num int) int) []int {
@@ -13,5 +13,13 @@ func transformNumbers(numbers *[]int, transform func(num int) int) []int {
 	}
 
 	return doubledNumbers
+}
+
+func getTransformerFunction(numbers *[]int) transformFunc {
+	if (*numbers)[0] == 1 {
+		return double
+	}
+
+	return triple
 }
 ```

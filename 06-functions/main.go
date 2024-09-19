@@ -5,11 +5,14 @@ import "fmt"
 type transformFunc func(int) int
 
 func main() {
-	numbers := []int{1, 2, 3, 4, 5}
-	doubled := transformNumbers(&numbers, double)
-	tripled := transformNumbers(&numbers, triple)
+	numbersToDouble := []int{1, 2, 3, 4, 5}
+	numbersToTriple := []int{3, 4, 5, 6, 7}
 
-	fmt.Println("Original numbers:", numbers)
+	doubled := transformNumbers(&numbersToDouble, getTransformerFunction(&numbersToDouble))
+	tripled := transformNumbers(&numbersToTriple, getTransformerFunction(&numbersToTriple))
+
+	fmt.Println("Original numbers to double:", numbersToDouble)
+	fmt.Println("Original numbers to triple:", numbersToTriple)
 	fmt.Println("Doubled numbers:", doubled)
 	fmt.Println("Tripled numbers:", tripled)
 }
@@ -30,4 +33,12 @@ func double(number int) int {
 
 func triple(number int) int {
 	return number * 3
+}
+
+func getTransformerFunction(numbers *[]int) transformFunc {
+	if (*numbers)[0] == 1 {
+		return double
+	}
+
+	return triple
 }
