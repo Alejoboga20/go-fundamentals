@@ -65,3 +65,30 @@ func factorial(n int) int {
   return n * factorial(n-1)
 }
 ```
+
+## Variadic Functions
+
+Variadic functions are functions that can take a variable number of arguments. The `...` syntax is used to indicate that a function is variadic. Here's an example of a variadic function:
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	sum := sumup(1, 2, 3, 4, 5)
+	fmt.Println("Sum of numbers is", sum)
+}
+
+func sumup(srartingValue int, numbers ...int) int {
+	sum := 0
+
+	fmt.Println("Starting value is", srartingValue)
+
+	for _, number := range numbers {
+		sum += number
+	}
+
+	return sum
+}
+```
