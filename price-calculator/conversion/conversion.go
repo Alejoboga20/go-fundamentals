@@ -1,6 +1,7 @@
 package conversion
 
 import (
+	"errors"
 	"strconv"
 )
 
@@ -11,7 +12,7 @@ func StringsToFloat(strings []string) ([]float64, error) {
 		floatValue, err := strconv.ParseFloat(stringValue, 64)
 
 		if err != nil {
-			return nil, err
+			return nil, errors.New("an error occurred while converting the strings to floats")
 		}
 
 		floats[stringIndex] = floatValue
