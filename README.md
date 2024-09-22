@@ -18,3 +18,4 @@ go run [filename].go
 - [Structs, Custom Types, Interfaces, and Generics](./04-structs/README.md)
 - [Collections](./05-collections/README.md)
 - [Deep Dive into Functions](./06-functions/README.md)
+- [Concurrency](./07-concurrency/README.md)
