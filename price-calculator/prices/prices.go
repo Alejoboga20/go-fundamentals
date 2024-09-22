@@ -1,6 +1,7 @@
 package prices
 
 import (
+	"errors"
 	"fmt"
 	"price-calculator/conversion"
 	"price-calculator/iomanager"
@@ -13,26 +14,30 @@ type TaxIncludedPriceJob struct {
 	IOManager         iomanager.IOManager `json:"-"`
 }
 
-func (job *TaxIncludedPriceJob) LoadData() {
+func (job *TaxIncludedPriceJob) LoadData() error {
 	lines, err := job.IOManager.ReadLines()
 
 	if err != nil {
-		fmt.Println(err)
-		return
+		return errors.New("an error occurred while reading the lines")
 	}
 
 	prices, err := conversion.StringsToFloat(lines)
 
 	if err != nil {
-		fmt.Println(err)
-		return
+		return errors.New("an error occurred while converting the strings to floats")
 	}
 
 	job.InputPrices = prices
+	return nil
 }
 
-func (job *TaxIncludedPriceJob) Process() {
-	job.LoadData()
+func (job *TaxIncludedPriceJob) Process() (any, error) {
+	err := job.LoadData()
+
+	if err != nil {
+		return nil, err
+	}
+
 	result := make(map[string]string)
 
 	for _, price := range job.InputPrices {
@@ -41,7 +46,7 @@ func (job *TaxIncludedPriceJob) Process() {
 	}
 
 	job.TaxIncludedPrices = result
-	job.IOManager.WriteResult(job)
+	return job.IOManager.WriteResult(job)
 }
 
 func NewTaxIncludedPriceJob(taxRate float64, iom iomanager.IOManager) *TaxIncludedPriceJob {
